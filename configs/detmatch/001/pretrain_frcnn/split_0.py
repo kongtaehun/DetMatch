@@ -14,7 +14,7 @@ _base_ = [
 
 load_from = 'https://download.openmmlab.com/mmdetection/v2.0/faster_rcnn/faster_rcnn_r50_fpn_1x_coco-person-bicycle-car/faster_rcnn_r50_fpn_1x_coco-person-bicycle-car_20201216_173117-6eda6d92.pth'
 
-batch_size = 8
+batch_size = 6
 dataset_repeat_multiplier = 10
 
 ## Dataset Settings
