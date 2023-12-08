@@ -74,7 +74,7 @@ def modified_multiclass_nms(multi_bboxes,
     if not torch.onnx.is_in_onnx_export():
         # NonZero not supported  in TensorRT
         inds = valid_mask.nonzero(as_tuple=False).squeeze(1)
-        bboxes, scores, labels = bboxes[inds], scores[inds], labels[inds]
+        bboxes, scores, labels = bboxes[inds.cpu()], scores[inds.cpu()], labels[inds.cpu()]
     else:
         # TensorRT NMS plugin has invalid output filled with -1
         # add dummy data to make detection output correct.
@@ -101,11 +101,11 @@ def modified_multiclass_nms(multi_bboxes,
         keep = keep[:max_num]
 
     if return_inds:
-        return dets, labels[keep], keep
+        return dets, labels[keep.cpu()], keep
     elif fixed_return_inds:
-        return dets, labels[keep], inds[keep]
+        return dets, labels[keep.cpu()], inds[keep.cpu()]
     else:
-        return dets, labels[keep]
+        return dets, labels[keep.cpu()]
 
 def apply_3d_transformation_bboxes(bbox, img_meta, reverse=False):
     """This version is very closely modeled off of apply_3d_transformation from

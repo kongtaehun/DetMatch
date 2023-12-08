@@ -15,7 +15,7 @@ pretrained = dict(
 load_from = None
 resume_from = None
 
-batch_size = 4
+batch_size = 2
 num_unlabeled_samples = 1
 
 data_root = 'data/kitti/'
@@ -860,10 +860,10 @@ lr_config = dict(
     step=[])
 momentum_config = None
 
-runner = dict(type='IterBasedSSLRunner', max_iters=5000)
+runner = dict(type='IterBasedSSLRunner', max_iters=60000)
 
-evaluation = dict(interval=5000)
-checkpoint_config = dict(by_epoch=False, interval=5000)
+evaluation = dict(interval=60000)
+checkpoint_config = dict(by_epoch=False, interval=60000)
 
 ## Special hook
 custom_imports = dict(

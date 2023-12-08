@@ -7,7 +7,7 @@ pretrained_split_frac = {0.01: '001', 0.02: '002', 0.20: '020'}[split_frac]
 
 work_dir = outputs_dir + '{}/pretrain_pvrcnn/split_{}'.format(pretrained_split_frac, split_num)
 
-batch_size = 8
+batch_size = 6
 dataset_repeat_multiplier = 10
 
 load_from = None

@@ -124,7 +124,8 @@ class OpenPCDetDetector(Base3DDetector):
             ## Mask away clases outside of 0 ~ num_classes
             mask = ((0 <= curr_gt_labels_3d) &
                     (curr_gt_labels_3d < self.num_classes))
-            curr_gt_bboxes_3d_grav_cnt = curr_gt_bboxes_3d_grav_cnt[mask]
+            # curr_gt_bboxes_3d_grav_cnt = curr_gt_bboxes_3d_grav_cnt
+            curr_gt_bboxes_3d_grav_cnt = curr_gt_bboxes_3d_grav_cnt[mask.cpu()]
             curr_gt_labels_3d_filt = curr_gt_labels_3d[mask]
 
             ## Append class label to box, 1-indexed.

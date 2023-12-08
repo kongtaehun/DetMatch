@@ -1,7 +1,7 @@
 import numpy as np
 import pickle
 import torch
-from canvas import Canvas
+from ..simple_plot3d import Canvas_3D as Canvas
 
 from mmdet3d.models.fusion_layers.coord_transform import \
     apply_3d_transformation
@@ -127,12 +127,12 @@ class Vis3D():
 
                 ### Set up canvas
                 canvas = Canvas(**self.canvas_init_kwargs)
-                canvas.draw_lines(**self.canvas_draw_lines_kwargs)
+                # canvas.draw_lines(**self.canvas_draw_lines_kwargs)
 
                 ### Draw points
                 canvas_xy, valid_mask = \
                     canvas.get_canvas_coords(curr_points.cpu().numpy())
-                canvas.draw_canvas_points(canvas_xy[valid_mask], 'Spectral')
+                canvas.draw_canvas_points(canvas_xy[valid_mask])
 
                 ### Draw GT boxes in green
                 if 'gt_bboxes' in curr_batch_dict:
